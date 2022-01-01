@@ -34,7 +34,7 @@ pull_uboot(){
 	else	
 		mv ${temp_root_dir}/${u_boot_dir}/u-boot/* ${temp_root_dir}/${u_boot_dir}/	
 		rm -rf ${temp_root_dir}/${u_boot_dir}/u-boot	
-		echo "pull buildroot ok"
+		echo "pull u_boot ok"
 	fi
 }
 pull_linux(){
@@ -49,7 +49,7 @@ pull_linux(){
 	else	
 		mv ${temp_root_dir}/${linux_dir}/linux/* ${temp_root_dir}/${linux_dir}/
 		rm -rf ${temp_root_dir}/${linux_dir}/linux
-		echo "pull buildroot ok"
+		echo "pull linux ok"
 	fi
 }
 pull_toolchain(){
@@ -58,22 +58,22 @@ pull_toolchain(){
 	cd ${temp_root_dir}/${toolchain_dir}
 	ldconfig
 	if [ $(getconf WORD_BIT) = '32' ] && [ $(getconf LONG_BIT) = '64' ] ; then
-		wget http://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabi/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabi.tar.xz &&\
-		tar xvJf gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabi.tar.xz
-		if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabi ]; then
+		wget http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabi//gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi.tar.xz &&\
+		tar xvJf gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi.tar.xz
+		if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi ]; then
 			echo "Error:pull toolchain failed"
 	    		exit 0
 		else			
-			echo "pull buildroot ok"
+			echo "pull toolchain ok"
 		fi
 	else
-	 	wget http://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabi/gcc-linaro-7.4.1-2019.02-i686_arm-linux-gnueabi.tar.xz &&\
-		tar xvJf gcc-linaro-7.4.1-2019.02-i686_arm-linux-gnueabi.tar.xz
-		if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.4.1-2019.02-i686_arm-linux-gnueabi ]; then
+	 	wget http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabi//gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi.tar.xz &&\
+		tar xvJf gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi.tar.xz
+		if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi ]; then
 			echo "Error:pull toolchain failed"
 	    		exit 0
 		else			
-			echo "pull buildroot ok"
+			echo "pull toolchain ok"
 		fi
 	fi
 }
@@ -115,15 +115,15 @@ pull_all(){
 
 #env===================================================================
 update_env(){
-	if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.4.1-2019.02-i686_arm-linux-gnueabi ]; then
-		if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabi ]; then
+	if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi ]; then
+		if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi ]; then
 			echo "Error:toolchain no found,Please use ./buid.sh pull_all "
 	    		exit 0
 		else			
-			export PATH="$PWD/${toolchain_dir}/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabi/bin":"$PATH"
+			export PATH="$PWD/${toolchain_dir}/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi/bin":"$PATH"
 		fi
 	else
-		export PATH="$PWD/${toolchain_dir}/gcc-linaro-7.4.1-2019.02-i686_arm-linux-gnueabi/bin":"$PATH"
+		export PATH="$PWD/${toolchain_dir}/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi/bin":"$PATH"
 	fi
 	
 }
