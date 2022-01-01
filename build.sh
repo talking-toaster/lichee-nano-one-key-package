@@ -58,7 +58,7 @@ pull_toolchain(){
 	cd ${temp_root_dir}/${toolchain_dir}
 	ldconfig
 	if [ $(getconf WORD_BIT) = '32' ] && [ $(getconf LONG_BIT) = '64' ] ; then
-		wget http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabi//gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi.tar.xz &&\
+		wget http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabi/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi.tar.xz &&\
 		tar xvJf gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi.tar.xz
 		if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabi ]; then
 			echo "Error:pull toolchain failed"
@@ -67,7 +67,7 @@ pull_toolchain(){
 			echo "pull toolchain ok"
 		fi
 	else
-	 	wget http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabi//gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi.tar.xz &&\
+	 	wget http://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/arm-linux-gnueabi/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi.tar.xz &&\
 		tar xvJf gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi.tar.xz
 		if [ ! -d ${temp_root_dir}/${toolchain_dir}/gcc-linaro-7.5.0-2019.12-i686_arm-linux-gnueabi ]; then
 			echo "Error:pull toolchain failed"
